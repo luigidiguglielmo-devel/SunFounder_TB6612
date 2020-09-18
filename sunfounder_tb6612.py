@@ -112,7 +112,7 @@ class Motor():
         if speed not in range(0, 101):
             raise ValueError('speed ranges fron 0 to 100, not "{}"'.format(speed))
         self._speed = speed;
-        pulse_width = int(_map(self._speed, 0, 100, 0, 4095));
+        pulse_width = int(_map(self._speed, 0, 100, 0x0000, 0xFFFF));
         self._pwm.duty_cycle = pulse_width;
 
     def forward(self):
