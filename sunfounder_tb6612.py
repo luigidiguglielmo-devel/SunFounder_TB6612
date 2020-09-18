@@ -109,7 +109,7 @@ class Motor():
     @speed.setter
     def speed(self, speed):
         ''' Set Speed with giving value '''
-        if speed not in range(0, 101):
+        if speed < 0 or speed > 100:
             raise ValueError('speed ranges fron 0 to 100, not "{}"'.format(speed))
         self._speed = speed;
         pulse_width = int(_map(self._speed, 0, 100, 0x0000, 0xFFFF));
