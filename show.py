@@ -5,39 +5,41 @@ license = open('LICENSE')
 flag = False
 
 def notice():
-	print 'Command Error.\nUsage:\n  show c      Show Conditions\n  show w      Show No Warranty'
-	quit()
+    print('Command Error\nUsage:');
+    print('\tshow c \t\tShow Conditions');
+    print('\tshow w \t\tShow No Warranty');
+    
 
 def showc():
-	global flag
-	for i in license:
-		if i[0:4] == '  2.':
-			flag = True
-			print '\n'
-			print '                             Conditions:'
-		if flag == True and i[0:4] == '    ':
-			if i[4:7] in ['a) ', 'b) ', 'c) ']:
-				print '\n'
-			print i[4:-1],
-		if i[0:4] == '  3.':
-			flag = False
+    global flag
+    for i in license:
+        if i[0:4] == '  2.':
+            flag = True
+            print('\n')
+            print( '                             Conditions:')
+        if flag == True and i[0:4] == '    ':
+            if i[4:7] in ['a) ', 'b) ', 'c) ']:
+                print('\n')
+            print(i[4:-1]),
+        if i[0:4] == '  3.':
+            flag = False
 
 def showw():
 	global flag
 	for i in license:
 		if i[-14:-1] == '  NO WARRANTY':
 			flag = True
-			print '\n'
+			print('\n')
 		if i[-28:-1] == 'END OF TERMS AND CONDITIONS':
 			flag = False
 		if flag == True:
 			if i[0:6] == '  11. ':
 				i = i[0:2] + i[3:]
-				print '\n'
+				print('\n')
 			if i[0:6] == '  12. ':
 				i = i[0:2] + i[3:]
-				print '\n'
-			print i[:-1],
+				print('\n')
+			print(i[:-1])
 
 def main():
 	if len(sys.argv) != 2:
