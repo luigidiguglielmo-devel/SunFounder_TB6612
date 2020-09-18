@@ -113,7 +113,7 @@ class Motor():
             raise ValueError('speed ranges fron 0 to 100, not "{}"'.format(speed))
         self._speed = speed;
         pulse_width = int(_map(self._speed, 0, 100, 0, 4095));
-        self._pwm.duty_cycle(pulse_width);
+        self._pwm.duty_cycle = pulse_width;
 
     def forward(self):
         ''' Set the motor direction to forward '''
@@ -123,7 +123,7 @@ class Motor():
 
     def backward(self):
         ''' Set the motor direction to backward '''
-        RPi.GPIO.output(self.direction_channel, self._backward_offset)
+        RPi.GPIO.output(self._gpio_pin, self._backward_offset)
         self.speed = self._speed;
 # 		self._debug_('Motor moving backward (%s)' % str(self.backward_offset))
 
