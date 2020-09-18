@@ -8,14 +8,13 @@
 * E-mail      : service@sunfounder.com
 * Website     : www.sunfounder.com
 * Update      : Cavon    2016-09-23    New release
+*               LDG      2020-09-18
 **********************************************************************
 '''
-import sys
 import time
 import board
 import pulseio
-import busio
-from sunfounder_tb6612 import TB6612, Motor
+from sunfounder_tb6612 import TB6612
 
 # PIN selection
 gpio_a, gpio_b= (17, 27);
